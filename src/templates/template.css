@@ -20,9 +20,11 @@
 }
 
 .react-simple-alerts-warn {
+  background-color: #e1bc29;
+  color: #fff2bf;
 }
 
 .react-simple-alerts-error {
   background-color: #e15554;
-  color: #ffcccc;
+  color: #ffd9d9;
 }
