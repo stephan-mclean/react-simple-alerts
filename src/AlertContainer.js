@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import DefaultTemplate from "./DefaultAlertTemplate";
-import DefaultCloseButton from "./DefaultAlertCloseBtn";
+import DefaultTemplate from "./templates/DefaultAlertTemplate";
+import DefaultCloseButton from "./templates/DefaultAlertCloseBtn";
 import { eventManager, EVENT_TYPES } from "./eventManager";
 
 class AlertContainer extends Component {

@@ -1,0 +1,28 @@
+.react-simple-alerts-default,
+.react-simple-alerts-success,
+.react-simple-alerts-warn,
+.react-simple-alerts-error {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.react-simple-alerts-default {
+  background-color: #fbfef9;
+  color: #071013;
+}
+
+.react-simple-alerts-success {
+  background-color: #6b994d;
+  color: #fbfef9;
+}
+
+.react-simple-alerts-warn {
+}
+
+.react-simple-alerts-error {
+  background-color: #e15554;
+  color: #ffcccc;
+}
