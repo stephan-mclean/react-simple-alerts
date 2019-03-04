@@ -26,7 +26,7 @@ const alerts = {
     return this.show(content, customOptions);
   },
   showSuccess(content, customOptions = {}) {
-    customElements.type = ALERT_TYPES.SUCCESS;
+    customOptions.type = ALERT_TYPES.SUCCESS;
     return this.show(content, customOptions);
   },
   close(id) {
