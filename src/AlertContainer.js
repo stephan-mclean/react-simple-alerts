@@ -6,8 +6,8 @@ import { eventManager, EVENT_TYPES } from "./eventManager";
 
 class AlertContainer extends Component {
   static propTypes = {
-    template: PropTypes.element.isRequired,
-    closeButton: PropTypes.element
+    template: PropTypes.func.isRequired,
+    closeButton: PropTypes.func
   };
 
   static defaultProps = {
