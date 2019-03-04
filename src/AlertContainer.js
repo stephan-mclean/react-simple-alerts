@@ -4,9 +4,12 @@ import DefaultTemplate from "./templates/DefaultAlertTemplate";
 import DefaultCloseButton from "./templates/DefaultAlertCloseBtn";
 import { eventManager, EVENT_TYPES } from "./eventManager";
 
+/** Container component which will render all alerts. */
 class AlertContainer extends Component {
   static propTypes = {
+    /** Component to render alerts by */
     template: PropTypes.func.isRequired,
+    /** Component used to render the close button shown for an alert, set to a falsy value for no close button */
     closeButton: PropTypes.func
   };
 

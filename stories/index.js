@@ -4,33 +4,75 @@ import { AlertContainer, alerts } from "../src";
 
 const CustomAlertComponent = ({ children }) => <Fragment>{children}</Fragment>;
 
-storiesOf("Alert Container", module).add("Default", () => (
-  <Fragment>
-    <AlertContainer />
+storiesOf("Alert Container", module).add(
+  "Default",
+  () => (
+    <Fragment>
+      <AlertContainer />
 
-    <button
-      onClick={() =>
-        alerts.show("Default", { onClose: id => console.log(`Closed ${id}`) })
-      }
-    >
-      Default
-    </button>
-    <button onClick={() => alerts.showSuccess("Success")}>Success</button>
-    <button onClick={() => alerts.showWarning("Warning")}>Warning</button>
-    <button onClick={() => alerts.showError("Error")}>Error</button>
-    <button
-      onClick={() =>
-        alerts.show(
-          <CustomAlertComponent>Custom alert component</CustomAlertComponent>
-        )
-      }
-    >
-      Custom Component
-    </button>
-    <button
-      onClick={() => alerts.show("Without close button", { closeButton: null })}
-    >
-      No close button
-    </button>
-  </Fragment>
-));
+      <button
+        onClick={() =>
+          alerts.show("Default", { onClose: id => console.log(`Closed ${id}`) })
+        }
+      >
+        Default
+      </button>
+      <button onClick={() => alerts.showSuccess("Success")}>Success</button>
+      <button onClick={() => alerts.showWarning("Warning")}>Warning</button>
+      <button onClick={() => alerts.showError("Error")}>Error</button>
+      <button
+        onClick={() =>
+          alerts.show(
+            <CustomAlertComponent>Custom alert component</CustomAlertComponent>
+          )
+        }
+      >
+        Custom Component
+      </button>
+      <button
+        onClick={() =>
+          alerts.show("Without close button", { closeButton: null })
+        }
+      >
+        No close button
+      </button>
+    </Fragment>
+  ),
+  {
+    info: {
+      source: false,
+      text: `
+        Render alerts using the AlertContainer component, and alerts functions. 
+
+        ~~~js
+        <div>
+            <AlertContainer />
+            <button
+                onClick={() => alerts.show("Default")>
+                Default
+            </button>
+            <button onClick={() => alerts.showSuccess("Success")}>Success</button>
+            <button onClick={() => alerts.showWarning("Warning")}>Warning</button>
+            <button onClick={() => alerts.showError("Error")}>Error</button>
+            <button
+                onClick={() =>
+                alerts.show(
+                    <CustomAlertComponent>Custom alert component</CustomAlertComponent>
+                )
+                }
+            >
+                Custom Component
+            </button>
+            <button
+                onClick={() =>
+                alerts.show("Without close button", { closeButton: null })
+                }
+            >
+                No close button
+            </button>
+        </div>
+        ~~~
+      `
+    }
+  }
+);
