@@ -71,7 +71,9 @@ class AlertContainer extends Component {
           id={`alert-${alert.id}`}
         >
           {content}
-          <CloseButton close={this.closeAlert.bind(this, alert.id)} />
+          {CloseButton && (
+            <CloseButton close={this.closeAlert.bind(this, alert.id)} />
+          )}
         </Template>
       );
     });
