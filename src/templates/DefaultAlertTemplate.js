@@ -20,7 +20,7 @@ export default ({ children, alertType, ...props }) => {
   const className = getClassName(alertType);
 
   return (
-    <div className={className} {...props}>
+    <div className={className} {...props} alertType={alertType}>
       {children}
     </div>
   );

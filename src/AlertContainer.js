@@ -62,28 +62,38 @@ class AlertContainer extends Component {
     const { template, closeButton } = this.props;
     const Template = template;
     const { alerts } = this.state;
-    return alerts.map(alert => {
-      let content = alert.content;
-      if (React.isValidElement(alert.content)) {
-        content = React.cloneElement(alert.content, alert.content.props);
-      }
+    return (
+      <div data-testid="alert-container">
+        {alerts.map(alert => {
+          let content = alert.content;
+          if (React.isValidElement(alert.content)) {
+            content = React.cloneElement(alert.content, alert.content.props);
+          }
 
-      const CloseButton =
-        alert.closeButton !== undefined ? alert.closeButton : closeButton;
+          const CloseButton =
+            alert.closeButton !== undefined ? alert.closeButton : closeButton;
 
-      return (
-        <Template
-          alertType={alert.type}
-          key={alert.id}
-          id={`alert-${alert.id}`}
-        >
-          {content}
-          {CloseButton && (
-            <CloseButton close={this.closeAlert.bind(this, alert)} />
-          )}
-        </Template>
-      );
-    });
+          const alertId = `alert-${alert.id}`;
+          const closeBtnId = alertId + "-close-btn";
+          return (
+            <Template
+              alertType={alert.type}
+              key={alert.id}
+              data-testid={alertId}
+              id={alertId}
+            >
+              {content}
+              {CloseButton && (
+                <CloseButton
+                  data-testid={closeBtnId}
+                  close={this.closeAlert.bind(this, alert)}
+                />
+              )}
+            </Template>
+          );
+        })}
+      </div>
+    );
   }
 }
 

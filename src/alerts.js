@@ -1,4 +1,4 @@
-import * as uuid from "uuid/v4";
+import uuid from "uuid/v4";
 import { eventManager, EVENT_TYPES } from "./eventManager";
 import { ALERT_TYPES } from "./alertTypes";
 
