@@ -30,7 +30,9 @@ class AlertContainer extends Component {
     });
 
     eventManager.on(EVENT_TYPES.REMOVE, alertId => {
-      this.closeAlert(alertId);
+      const { alerts } = this.state;
+      const alert = alerts.find(alert => alert.id === alertId);
+      this.closeAlert(alert);
     });
   }
 
@@ -39,7 +41,7 @@ class AlertContainer extends Component {
     eventManager.off(EVENT_TYPES.REMOVE);
   }
 
-  closeAlert = alert => {
+  closeAlert = (alert = {}) => {
     const { id } = alert;
     const { alerts } = this.state;
     const idxOfAlert = alerts.findIndex(alert => alert.id === id);
