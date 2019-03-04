@@ -1,5 +1,7 @@
 # Render alerts using the AlertContainer component, and alerts functions.
 
+Alerts will be rendered inline, wherever you place the `AlertContainer` component.
+
 ```javascript
 import React, { Fragment } from "react";
 import { AlertContainer, alerts } from "react-very-simple-alerts";
