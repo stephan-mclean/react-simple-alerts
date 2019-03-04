@@ -54,13 +54,16 @@ class AlertContainer extends Component {
   render() {
     const { template, closeButton } = this.props;
     const Template = template;
-    const CloseButton = closeButton;
     const { alerts } = this.state;
     return alerts.map(alert => {
       let content = alert.content;
       if (React.isValidElement(alert.content)) {
         content = React.cloneElement(alert.content, alert.content.props);
       }
+
+      const CloseButton =
+        alert.closeButton !== undefined ? alert.closeButton : closeButton;
+
       return (
         <Template
           alertType={alert.type}

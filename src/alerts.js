@@ -2,28 +2,32 @@ import * as uuid from "uuid/v4";
 import { eventManager, EVENT_TYPES } from "./eventManager";
 import { ALERT_TYPES } from "./alertTypes";
 
-const getAlertOptions = type => {
+const getAlertOptions = options => {
   return {
-    type,
-    id: uuid()
+    type: ALERT_TYPES.DEFAULT,
+    id: uuid(),
+    ...options
   };
 };
 
 const alerts = {
-  show(content, type = ALERT_TYPES.DEFAULT) {
-    const options = getAlertOptions(type);
+  show(content, customOptions = {}) {
+    const options = getAlertOptions(customOptions);
     eventManager.emit(EVENT_TYPES.SHOW, content, options);
 
     return options.id;
   },
-  showError(content) {
-    return this.show(content, ALERT_TYPES.ERROR);
+  showError(content, customOptions = {}) {
+    customOptions.type = ALERT_TYPES.ERROR;
+    return this.show(content, customOptions);
   },
-  showWarning(content) {
-    return this.show(content, ALERT_TYPES.WARN);
+  showWarning(content, customOptions = {}) {
+    customOptions.type = ALERT_TYPES.WARN;
+    return this.show(content, customOptions);
   },
-  showSuccess(content) {
-    return this.show(content, ALERT_TYPES.SUCCESS);
+  showSuccess(content, customOptions = {}) {
+    customElements.type = ALERT_TYPES.SUCCESS;
+    return this.show(content, customOptions);
   },
   close(id) {
     eventManager.emit(EVENT_TYPES.REMOVE, id);
