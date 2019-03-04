@@ -1,7 +1,7 @@
 {
-  "name": "react-simple-alerts",
+  "name": "react-very-simple-alerts",
   "version": "1.0.0",
-  "description": "Simple inline alert component. ",
+  "description": "Simple inline alert component.",
   "main": "build/index.js",
   "scripts": {
     "start": "webpack --watch",
