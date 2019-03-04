@@ -39,13 +39,18 @@ class AlertContainer extends Component {
     eventManager.off(EVENT_TYPES.REMOVE);
   }
 
-  closeAlert = id => {
+  closeAlert = alert => {
+    const { id } = alert;
     const { alerts } = this.state;
     const idxOfAlert = alerts.findIndex(alert => alert.id === id);
     if (idxOfAlert > -1) {
       const newAlerts = [...alerts];
       newAlerts.splice(idxOfAlert, 1);
       this.setState({ alerts: newAlerts });
+
+      if (alert.onClose) {
+        alert.onClose(id);
+      }
     } else {
       console.warn(`Could not close alert with id: ${id}`);
     }
@@ -72,7 +77,7 @@ class AlertContainer extends Component {
         >
           {content}
           {CloseButton && (
-            <CloseButton close={this.closeAlert.bind(this, alert.id)} />
+            <CloseButton close={this.closeAlert.bind(this, alert)} />
           )}
         </Template>
       );

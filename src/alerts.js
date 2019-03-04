@@ -2,10 +2,13 @@ import * as uuid from "uuid/v4";
 import { eventManager, EVENT_TYPES } from "./eventManager";
 import { ALERT_TYPES } from "./alertTypes";
 
+const defaultOnCloseFn = () => {};
+
 const getAlertOptions = options => {
   return {
     type: ALERT_TYPES.DEFAULT,
     id: uuid(),
+    onClose: defaultOnCloseFn,
     ...options
   };
 };
