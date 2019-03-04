@@ -7,7 +7,7 @@ jest.mock("uuid/v4", () => {
   return () => value++;
 });
 
-import { alerts, AlertContainer, ALERT_TYPES } from "../src";
+import { alerts, withAlerts, AlertContainer, ALERT_TYPES } from "../src";
 
 afterEach(cleanup);
 
@@ -139,4 +139,32 @@ test("It should call the onClose callback when an alert is closed", () => {
   fireEvent.click(closeButton);
   expect(alert).not.toBeInTheDocument();
   expect(onClose).toHaveBeenLastCalledWith(id);
+});
+
+test("It should render correctly using withAlerts HOC", () => {
+  let WrappedComponent = ({ alerts }) => (
+    <div>
+      <button
+        data-testid="alerts-btn"
+        onClick={() => alerts.show("My alert", { closeButton: null })}
+      >
+        Show Alert
+      </button>
+    </div>
+  );
+
+  WrappedComponent = withAlerts(WrappedComponent);
+
+  const HOCApp = () => (
+    <div>
+      <WrappedComponent />
+    </div>
+  );
+
+  const { getByText, getByTestId } = render(<HOCApp />);
+
+  const alertBtn = getByTestId("alerts-btn");
+  fireEvent.click(alertBtn);
+
+  expect(getByText(/My alert/i)).toBeInTheDocument();
 });
