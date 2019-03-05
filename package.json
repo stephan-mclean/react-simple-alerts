@@ -1,6 +1,6 @@
 {
   "name": "react-very-simple-alerts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple inline alert component.",
   "main": "build/index.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "webpack --mode production",
     "test": "jest --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/index.js",
     "storybook": "start-storybook -p 9009 -c .storybook",
-    "build-storybook": "build-storybook -c .storybook"
+    "build-storybook": "build-storybook -c .storybook",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
